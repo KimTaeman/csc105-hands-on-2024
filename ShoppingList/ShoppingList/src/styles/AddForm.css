@@ -1,0 +1,17 @@
+.AddForm{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-form-input{
+  width: 75%;
+  background-color: #1a1a1a;  
+  color: #1a1a1a;
+}
+
+.add-btn{
+  width: 15%;
+  background-color: #17964c;
+  color: #fff;
+}

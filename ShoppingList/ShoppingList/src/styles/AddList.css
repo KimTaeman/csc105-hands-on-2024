@@ -1,0 +1,37 @@
+.AddList{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #eee;
+    width: 100%;
+    height: auto;
+    padding: 5px 0;
+    margin-top: 10px;
+}
+
+/* input {
+  width: 80%;
+  background-color: transparent;
+  border: 0;
+  color: #000;
+} */
+
+p {
+  width: 80%;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.green {
+  background-color: rgba(red, rgba(45, 202, 45, 0.286), blue, alpha);
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.complete {
+  text-decoration: line-through;
+}

@@ -4,7 +4,7 @@ import Button from "../components/Button"
 
 const Home = () => {
   return (
-    <div className="home w-full p-3 md:p-10 md:mb-20 flex justify-center text-black text-sm md:text-lg md:font-bold">
+    <section className="home w-full p-3 md:p-10 md:mb-20 flex justify-center text-black text-sm md:text-lg md:font-bold" id="home">
     
       <div className="contents-container h-auto flex flex-row md:w-5/6">
 
@@ -25,7 +25,7 @@ const Home = () => {
           <img src="https://static.vecteezy.com/system/resources/previews/024/558/280/non_2x/businessman-isolated-illustration-ai-generative-free-png.png" className="bg-cover" alt="" />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

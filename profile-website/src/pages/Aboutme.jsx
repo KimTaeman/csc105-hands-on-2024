@@ -3,7 +3,7 @@ import Button from "../components/Button"
 
 const Aboutme = () => {
   return (
-    <div className="home w-full p-8 md:p-20 flex flex-col md:flex-row justify-center items-center text-black text-sm md:text-lg md:font-bold">
+    <section className="home w-full p-8 md:p-20 flex flex-col md:flex-row justify-center items-center text-black text-sm md:text-lg md:font-bold" id="aboutme">
       <div className="home-img w-80 md:w-1/2 p-5">
           <img src="https://static.vecteezy.com/system/resources/previews/024/558/280/non_2x/businessman-isolated-illustration-ai-generative-free-png.png" className="bg-cover" alt="" />
         </div>
@@ -18,7 +18,7 @@ const Aboutme = () => {
         </div>
         
       </div>
-    </div>
+    </section>
   )
 }
 

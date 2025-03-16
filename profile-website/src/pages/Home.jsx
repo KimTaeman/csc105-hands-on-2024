@@ -4,7 +4,7 @@ import Button from "../components/Button"
 
 const Home = () => {
   return (
-    <div className="home w-full p-3 flex justify-center text-black text-sm md:text-lg md:font-bold">
+    <div className="home w-full p-3 md:p-10 md:mb-20 flex justify-center text-black text-sm md:text-lg md:font-bold">
     
       <div className="contents-container h-auto flex flex-row md:w-5/6">
 
@@ -19,7 +19,7 @@ const Home = () => {
             <a href="#" className="social-link w-6 md:w-10"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt=""/></a>
             <a href="#" className="social-link w-6 md:w-10"><img src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg" alt="" className="rounded-lg"/></a>
           </div>
-            <Button text="My Portfolio" className="home-btn" style="md:text-sm md:font-semi-bold md:px-12 md:py-2 text-xs md:w-50 w-25 px-1"/>
+            <Button text="My Portfolio" className="home-btn" style="md:text-sm md:px-12 md:py-2 text-xs md:w-50 w-25 px-1"/>
         </div>
         <div className="home-img w-1/2 h-auto">
           <img src="https://static.vecteezy.com/system/resources/previews/024/558/280/non_2x/businessman-isolated-illustration-ai-generative-free-png.png" className="bg-cover" alt="" />

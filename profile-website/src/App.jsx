@@ -25,6 +25,7 @@ function App() {
      </nav>
 
      <Home />
+     <Aboutme />
     </div>
   )
 }

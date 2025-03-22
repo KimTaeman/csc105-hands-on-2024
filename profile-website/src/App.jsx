@@ -7,7 +7,7 @@ import Aboutme from "./pages/Aboutme"
 function App() {
   return (
     <div>
-      <Navbar/>
+     <Navbar/>
      <Home />
      <Aboutme />
      <Gallery />

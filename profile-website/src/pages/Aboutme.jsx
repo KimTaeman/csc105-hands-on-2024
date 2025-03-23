@@ -3,10 +3,10 @@ import Button from "../components/Button"
 
 const Aboutme = () => {
   return (
-    <section className="home w-full p-8 md:p-20 flex flex-col md:flex-row justify-center items-center text-black text-sm md:text-lg md:font-bold" id="aboutme">
+    <section className="home min-w-screen p-8 md:p-20 flex flex-col md:flex-row justify-center items-center text-black text-sm md:text-lg md:font-bold" id="aboutme">
       <div className="home-img w-80 md:w-1/2 p-5">
-          <img src="https://static.vecteezy.com/system/resources/previews/024/558/280/non_2x/businessman-isolated-illustration-ai-generative-free-png.png" className="bg-cover" alt="Artist John Profile" />
-        </div>
+        <img src="https://static.vecteezy.com/system/resources/previews/024/558/280/non_2x/businessman-isolated-illustration-ai-generative-free-png.png" className="bg-cover" alt="Artist John Profile" />
+      </div>
       <div className="contents-container h-auto flex flex-row justify-between w-full m-5 md:w-1/2">
 
         <div className="home-text text-left flex flex-col gap-1.5 md:gap-4 justify-center md:pr-10">

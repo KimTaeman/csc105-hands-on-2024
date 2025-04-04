@@ -2,7 +2,14 @@ import type { Context, Next } from 'hono';
 import type { CreateTodoInput, UpdateTodoInput } from '../types/index.ts';
 
 export async function validateIdParam(c: Context, next: Next) {
-  // IMPLEMENT HERE
+  const idParam = c.req.param('id');
+  if (!/^\d+$/.test(idParam)) {
+    return c.json({
+      message: 'Invalid id',
+    });
+  }
+  c.set('todoId', idParam);
+  await next();
 }
 
 export async function validateCreateTodo(c: Context, next: Next) {

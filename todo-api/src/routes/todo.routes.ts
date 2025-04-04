@@ -10,22 +10,22 @@ import {
 const todoRoutes = new Hono();
 
 // Define routes
-todoRoutes.WHAT('/', TodoController.getTodos);
-todoRoutes.WHAT('/search', TodoController.searchTodos);
-todoRoutes.WHAT('/:id', validateIdParam, TodoController.getTodo);
-todoRoutes.WHAT('/', validateCreateTodo, TodoController.createTodo);
-todoRoutes.WHAT(
+todoRoutes.get('/', TodoController.getTodos);
+todoRoutes.get('/search', TodoController.searchTodos);
+todoRoutes.get('/:id', validateIdParam, TodoController.getTodo);
+todoRoutes.post('/', validateCreateTodo, TodoController.createTodo);
+todoRoutes.patch(
   '/:id',
   validateIdParam,
   validateUpdateTodo,
   TodoController.updateTodo
 );
-todoRoutes.WHAT(
+todoRoutes.patch(
   '/:id',
   validateIdParam,
   validatePatchTodo,
   TodoController.patchTodo
 );
-todoRoutes.WHAT('/:id', validateIdParam, TodoController.deleteTodo);
+todoRoutes.delete('/:id', validateIdParam, TodoController.deleteTodo);
 
 export default todoRoutes;

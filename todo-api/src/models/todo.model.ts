@@ -14,7 +14,7 @@ export function findAll(): Todo[] {
 
 // Get a specific todo by ID
 export function findById(id: number): Todo | undefined {
-  // IMPLEMENT HERE
+  return todos.find((todo) => todo.id === id);
 }
 
 // Create a new todo
@@ -66,7 +66,15 @@ export function patch(id: number, input: UpdateTodoInput): Todo | undefined {
 
 // Delete a todo
 export function remove(id: number): Todo | undefined {
-  //IMPLEMENT HERE
+  const idx = todos.findIndex((todo) => todo.id === id);
+
+  if (idx === -1) {
+    return undefined;
+  }
+
+  const deletedTodo = todos[idx];
+  todos.splice(idx, 1);
+  return deletedTodo;
 }
 
 // Filter todos by completion status
@@ -76,7 +84,12 @@ export function findByCompleted(completed: boolean): Todo[] {
 
 // Search todos by title
 export function search(term: string): Todo[] {
+  // If empty input
   if (!term) return [];
 
-  // IMPLEMENT HERE
+  // If there is input
+  // Lowercase the input and title to make the search case-insensitive
+  return todos.filter((todo) =>
+    todo.title.toLowerCase().includes(term.toLowerCase())
+  );
 }

@@ -17,7 +17,7 @@ const todos: Todo[] = [
   {
     id: 1,
     name: 'Learn Frontend',
-    success: false,
+    success: true,
   },
   {
     id: 2,
@@ -32,6 +32,13 @@ const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
 const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
   if (e.key === 'Enter') {
+    todos.push({
+      id: todos.length + 1,
+      name: e.currentTarget.value,
+      success: false,
+    });
+    e.currentTarget.value = '';
+    console.log(todos);
   }
 };
 
@@ -49,6 +56,7 @@ const App = () => {
           className='bg-purple-400'
           onChange={handleOnChange}
           onKeyDown={handleOnKeyDown}
+          placeholder='New Todo'
         />
       </div>
       {/* Todo lists */}
@@ -59,7 +67,9 @@ const App = () => {
               <FaRegCircle />
               <FaRegDotCircle />
             </span> */}
-            <h1>{todo.name}</h1>
+            <h1 className={`${todo.success ? 'line-through' : ''}`}>
+              {todo.name}
+            </h1>
             <p>{todo.success ? 'Success' : 'Not Success'}</p>
             <Button variant='outline' size='sm'>
               Edit

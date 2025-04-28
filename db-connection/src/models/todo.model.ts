@@ -70,10 +70,20 @@ const getAllTodosFromUser = async (userId: number) => {
   return todos;
 };
 
+const deleteTodo = async (id: number) => {
+  const todo = await db.todo.delete({
+    where: {
+      id: id,
+    },
+  });
+  return todo;
+};
+
 export {
   createTodo,
   getTodo,
   markTodoCompleted,
   updateTodoTitle,
   getAllTodosFromUser,
+  deleteTodo,
 };

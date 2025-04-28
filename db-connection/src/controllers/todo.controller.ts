@@ -153,13 +153,38 @@ const getAllTodosFromUser = async (c: Context) => {
   }
 };
 
+const deleteTodo = async (c: Context) => {
+  try {
+    const query = c.req.query('id');
+    if (query !== undefined && query !== null) {
+      const data = await todoModel.deleteTodo(parseInt(query));
+      return c.json(data, 200);
+    }
+    return c.json(
+      {
+        success: false,
+        data: null,
+        msg: 'Missing required fields',
+      },
+      400
+    );
+  } catch (e) {
+    return c.json(
+      {
+        success: false,
+        data: null,
+        msg: `${e}`,
+      },
+      500
+    );
+  }
+};
+
 export {
   createTodo,
   getTodo,
   markTodoCompleted,
   updateTodoTitle,
   getAllTodosFromUser,
+  deleteTodo,
 };
-
-// FIX MARKTODO AND UPDATE TODO TITLE
-// READ DELETE AND SO ON

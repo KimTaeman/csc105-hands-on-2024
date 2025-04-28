@@ -15,11 +15,15 @@ todoRouter.patch('/complete', todoController.markTodoCompleted);
 todoRouter.patch('/newtitle', todoController.updateTodoTitle);
 // PATCH: http://localhost:3000/todos/newtitle?id=1
 // {
-//   "title": "hahah",
+//   "title": "hahah"
 // }
 
 // Getting all todos from a user using todo route
 todoRouter.get('/user', todoController.getAllTodosFromUser);
 // GET: http://localhost:3000/todos/user?userId=1
+
+// delete a todo using todo route
+todoRouter.delete('/', todoController.deleteTodo);
+// DELETE: http://localhost:3000/todos?id=1
 
 export { todoRouter };

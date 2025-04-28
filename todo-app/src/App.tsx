@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import { Button } from "./components/ui/button";
 import { IoIosAdd } from "react-icons/io";
 import { FaRegCircle } from "react-icons/fa";
 import { FaRegDotCircle } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
@@ -30,6 +30,13 @@ const App = () => {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingText, setEditingText] = useState<string>("");
   const [newTodoText, setNewTodoText] = useState<string>("");
+
+  useEffect(() => {
+    fetch("/todos") // Assuming your backend runs on the same domain or proxy is set
+      .then((res) => res.json())
+      .then((data) => setTodos(data))
+      .catch((err) => console.error("Failed to fetch todos:", err));
+  }, []);
 
   // Handle adding new todo
   const handleAddTodo = () => {

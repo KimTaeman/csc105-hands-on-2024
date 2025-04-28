@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Button } from './components/ui/button';
-import { IoIosAdd } from 'react-icons/io';
-import { FaRegCircle } from 'react-icons/fa';
-import { FaRegDotCircle } from 'react-icons/fa';
+import React, { useState } from "react";
+import { Button } from "./components/ui/button";
+import { IoIosAdd } from "react-icons/io";
+import { FaRegCircle } from "react-icons/fa";
+import { FaRegDotCircle } from "react-icons/fa";
 
-import './App.css';
+import "./App.css";
 
 type Todo = {
   id: number;
@@ -15,12 +15,12 @@ type Todo = {
 const initialTodos: Todo[] = [
   {
     id: 1,
-    name: 'Learn Frontend',
+    name: "Learn Frontend",
     success: true,
   },
   {
     id: 2,
-    name: 'Learn Backend',
+    name: "Learn Backend",
     success: false,
   },
 ];
@@ -28,19 +28,19 @@ const initialTodos: Todo[] = [
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>(initialTodos);
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [editingText, setEditingText] = useState<string>('');
-  const [newTodoText, setNewTodoText] = useState<string>('');
+  const [editingText, setEditingText] = useState<string>("");
+  const [newTodoText, setNewTodoText] = useState<string>("");
 
   // Handle adding new todo
   const handleAddTodo = () => {
-    if (newTodoText.trim() === '') return;
+    if (newTodoText.trim() === "") return;
     const newTodo: Todo = {
       id: Date.now(),
       name: newTodoText,
       success: false,
     };
     setTodos((prev) => [...prev, newTodo]);
-    setNewTodoText('');
+    setNewTodoText("");
   };
 
   // Start editing a todo
@@ -57,12 +57,15 @@ const App = () => {
       )
     );
     setEditingId(null);
-    setEditingText('');
+    setEditingText("");
   };
 
   // Handle input key events (Enter to save or add)
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, id?: number) => {
-    if (e.key === 'Enter') {
+  const handleInputKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    id?: number
+  ) => {
+    if (e.key === "Enter") {
       if (editingId !== null && id !== undefined) {
         handleSaveClick(id);
       } else {
@@ -86,16 +89,16 @@ const App = () => {
   };
 
   return (
-    <div className='w-screen h-screen bg-blue-300 flex flex-col gap-5 items-center justify-center p-10'>
+    <div className="w-screen h-screen bg-blue-300 flex flex-col gap-5 items-center justify-center p-10">
       {/* Add Todo Section */}
-      <div className='flex bg-white rounded-2xl px-10 py-2 gap-2'>
-        <Button variant='outline' size='sm' onClick={handleAddTodo}>
+      <div className="flex bg-white rounded-2xl px-10 py-2 gap-2">
+        <Button variant="outline" size="sm" onClick={handleAddTodo}>
           <IoIosAdd />
         </Button>
         <input
-          type='text'
-          className='bg-purple-400 px-2 py-1 rounded-md'
-          placeholder='Add new todo...'
+          type="text"
+          className="bg-purple-400 px-2 py-1 rounded-md"
+          placeholder="Add new todo..."
           value={newTodoText}
           onChange={(e) => setNewTodoText(e.target.value)}
           onKeyDown={(e) => handleInputKeyDown(e)}
@@ -103,13 +106,16 @@ const App = () => {
       </div>
 
       {/* Todo List */}
-      <div className='flex flex-col gap-5'>
+      <div className="flex flex-col gap-5">
         {todos.map((todo) => (
-          <div key={todo.id} className='flex gap-5 items-center bg-white rounded-2xl p-5'>
+          <div
+            key={todo.id}
+            className="flex gap-5 items-center bg-white rounded-2xl p-5"
+          >
             {/* Success Toggle */}
             <span
               onClick={() => toggleSuccess(todo.id)}
-              className='cursor-pointer text-2xl'
+              className="cursor-pointer text-2xl"
             >
               {todo.success ? <FaRegDotCircle /> : <FaRegCircle />}
             </span>
@@ -120,26 +126,38 @@ const App = () => {
                 value={editingText}
                 onChange={(e) => setEditingText(e.target.value)}
                 onKeyDown={(e) => handleInputKeyDown(e, todo.id)}
-                className='border-b border-gray-400 outline-none'
+                className="border-b border-gray-400 outline-none"
               />
             ) : (
-              <h1 className={todo.success ? 'line-through' : ''}>
+              <h1 className={todo.success ? "line-through" : ""}>
                 {todo.name}
               </h1>
             )}
 
             {/* Buttons */}
             {editingId === todo.id ? (
-              <Button variant='outline' size='sm' onClick={() => handleSaveClick(todo.id)}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleSaveClick(todo.id)}
+              >
                 Save
               </Button>
             ) : (
-              <Button variant='outline' size='sm' onClick={() => handleEditClick(todo)}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleEditClick(todo)}
+              >
                 Edit
               </Button>
             )}
 
-            <Button variant='outline' size='sm' onClick={() => handleDelete(todo.id)}>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => handleDelete(todo.id)}
+            >
               X
             </Button>
           </div>

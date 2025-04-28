@@ -13,7 +13,7 @@ type Todo = {
   success: boolean;
 };
 
-const todos: Todo[] = [
+const [todos, setTodos] = useState<Todo[]>([
   {
     id: 1,
     name: 'Learn Frontend',
@@ -24,7 +24,7 @@ const todos: Todo[] = [
     name: 'Learn Backend',
     success: false,
   },
-];
+]);
 
 const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   console.log(e.target.value);
@@ -32,13 +32,14 @@ const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
 const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
   if (e.key === 'Enter') {
-    todos.push({
-      id: todos.length + 1,
-      name: e.currentTarget.value,
-      success: false,
-    });
-    e.currentTarget.value = '';
-    console.log(todos);
+    setTodos((prev) => [
+      ...prev,
+      {
+        id: prev.length + 1,
+        name: e.currentTarget.value,
+        success: false,
+      },
+    ]);
   }
 };
 

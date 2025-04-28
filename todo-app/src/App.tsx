@@ -26,6 +26,15 @@ const todos: Todo[] = [
   },
 ];
 
+const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(e.target.value);
+};
+
+const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  if (e.key === 'Enter') {
+  }
+};
+
 const App = () => {
   return (
     <div className='w-screen h-screen bg-blue-300 flex flex-col gap-3 items-center justify-center'>
@@ -35,7 +44,12 @@ const App = () => {
           <IoIosAdd />
         </Button>
         {/* Input for new todo */}
-        <input type='text' className='bg-purple-400' />
+        <input
+          type='text'
+          className='bg-purple-400'
+          onChange={handleOnChange}
+          onKeyDown={handleOnKeyDown}
+        />
       </div>
       {/* Todo lists */}
       <div className='flex flex-col gap-10'>

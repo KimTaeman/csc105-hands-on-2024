@@ -89,79 +89,81 @@ const App = () => {
   };
 
   return (
-    <div className='w-screen h-screen bg-blue-300 flex flex-col gap-5 items-center justify-center p-10'>
-      {/* Add Todo Section */}
-      <div className='flex bg-white rounded-2xl px-10 py-2 gap-2'>
-        <Button variant='outline' size='sm' onClick={handleAddTodo}>
-          <IoIosAdd />
-        </Button>
-        <input
-          type='text'
-          className='bg-purple-400 px-2 py-1 rounded-md'
-          placeholder='Add new todo...'
-          value={newTodoText}
-          onChange={(e) => setNewTodoText(e.target.value)}
-          onKeyDown={(e) => handleInputKeyDown(e)}
-        />
-      </div>
+    <div className='flex items-center justify-center h-screen'>
+      <div className='bg-blue-300 flex flex-col gap-5 items-center justify-center p-10 w-100 h-100 rounded-2xl'>
+        {/* Add Todo Section */}
+        <div className='flex bg-white rounded-2xl px-10 py-2 gap-2'>
+          <Button variant='outline' size='sm' onClick={handleAddTodo}>
+            <IoIosAdd />
+          </Button>
+          <input
+            type='text'
+            className='px-2 py-1 rounded-md'
+            placeholder='Add new todo...'
+            value={newTodoText}
+            onChange={(e) => setNewTodoText(e.target.value)}
+            onKeyDown={(e) => handleInputKeyDown(e)}
+          />
+        </div>
 
-      {/* Todo List */}
-      <div className='flex flex-col gap-5'>
-        {todos.map((todo) => (
-          <div
-            key={todo.id}
-            className='flex gap-5 items-center bg-white rounded-2xl p-5'
-          >
-            {/* Success Toggle */}
-            <span
-              onClick={() => toggleSuccess(todo.id)}
-              className='cursor-pointer text-2xl'
+        {/* Todo List */}
+        <div className='flex flex-col gap-5'>
+          {todos.map((todo) => (
+            <div
+              key={todo.id}
+              className='flex gap-5 items-center bg-white rounded-2xl p-5'
             >
-              {todo.success ? <FaRegDotCircle /> : <FaRegCircle />}
-            </span>
+              {/* Success Toggle */}
+              <span
+                onClick={() => toggleSuccess(todo.id)}
+                className='cursor-pointer text-2xl'
+              >
+                {todo.success ? <FaRegDotCircle /> : <FaRegCircle />}
+              </span>
 
-            {/* Todo Text or Edit Input */}
-            {editingId === todo.id ? (
-              <input
-                value={editingText}
-                onChange={(e) => setEditingText(e.target.value)}
-                onKeyDown={(e) => handleInputKeyDown(e, todo.id)}
-                className='border-b border-gray-400 outline-none'
-              />
-            ) : (
-              <h1 className={todo.success ? 'line-through' : ''}>
-                {todo.name}
-              </h1>
-            )}
+              {/* Todo Text or Edit Input */}
+              {editingId === todo.id ? (
+                <input
+                  value={editingText}
+                  onChange={(e) => setEditingText(e.target.value)}
+                  onKeyDown={(e) => handleInputKeyDown(e, todo.id)}
+                  className='border-b border-gray-400 outline-none'
+                />
+              ) : (
+                <h1 className={todo.success ? 'line-through' : ''}>
+                  {todo.name}
+                </h1>
+              )}
 
-            {/* Buttons */}
-            {editingId === todo.id ? (
+              {/* Buttons */}
+              {editingId === todo.id ? (
+                <Button
+                  variant='outline'
+                  size='sm'
+                  onClick={() => handleSaveClick(todo.id)}
+                >
+                  Save
+                </Button>
+              ) : (
+                <Button
+                  variant='outline'
+                  size='sm'
+                  onClick={() => handleEditClick(todo)}
+                >
+                  Edit
+                </Button>
+              )}
+
               <Button
                 variant='outline'
                 size='sm'
-                onClick={() => handleSaveClick(todo.id)}
+                onClick={() => handleDelete(todo.id)}
               >
-                Save
+                X
               </Button>
-            ) : (
-              <Button
-                variant='outline'
-                size='sm'
-                onClick={() => handleEditClick(todo)}
-              >
-                Edit
-              </Button>
-            )}
-
-            <Button
-              variant='outline'
-              size='sm'
-              onClick={() => handleDelete(todo.id)}
-            >
-              X
-            </Button>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

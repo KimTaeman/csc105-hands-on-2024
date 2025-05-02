@@ -1,4 +1,4 @@
-import { db } from "../index.ts";
+import { db } from '../index.ts';
 
 const GetTodo = async () => {
   const todo = await db.todo.findMany();
@@ -14,10 +14,10 @@ const AddTodo = async (newTodoName: string) => {
   return newtodo;
 };
 
-const EditTodo = async (todoId: number, editTodoName: string) => {
+const EditTodo = async (id: number, editTodoName: string) => {
   const editedTodo = await db.todo.update({
     where: {
-      id: todoId,
+      id: id,
     },
     data: {
       name: editTodoName,
@@ -26,22 +26,22 @@ const EditTodo = async (todoId: number, editTodoName: string) => {
   return editedTodo;
 };
 
-const SuccessTodo = async (todoId: number) => {
+const SuccessTodo = async (id: number) => {
   // Fetch the current todo to check the current value of 'success'
   const currentTodo = await db.todo.findUnique({
     where: {
-      id: todoId,
+      id: id,
     },
   });
 
   if (!currentTodo) {
-    throw new Error("Todo not found");
+    throw new Error('Todo not found');
   }
 
   // Toggle the 'success' field
   const updatedTodo = await db.todo.update({
     where: {
-      id: todoId,
+      id: id,
     },
     data: {
       success: !currentTodo.success,
@@ -51,10 +51,10 @@ const SuccessTodo = async (todoId: number) => {
   return updatedTodo;
 };
 
-const DeleteTodo = async (todoId: number) => {
+const DeleteTodo = async (id: number) => {
   const deletedTodo = await db.todo.delete({
     where: {
-      id: todoId,
+      id: id,
     },
   });
   return deletedTodo;
